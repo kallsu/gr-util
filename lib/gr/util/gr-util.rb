@@ -10,6 +10,8 @@ module GRUtil
   # Custom call of internal execution of block and an item as input
   #
   def GRUtil.custom(&block)
+    
+    # inner call
     block.call
   end
 
