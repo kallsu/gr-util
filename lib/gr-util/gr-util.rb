@@ -1,16 +1,16 @@
-require "gr/util/version"
+require "gr-util/version"
 
 #
 # Module to collect all utility methods that need more than two lines.
 #
-# author Giorgio Desideri <giorgio.desideri@gmail.com>
+# Author:: Giorgio Desideri <giorgio.desideri@gmail.com>
 #
 module GRUtil
   #
   # Custom call of internal execution of block and an item as input
   #
   def GRUtil.custom(&block)
-    
+
     # inner call
     block.call
   end
@@ -23,23 +23,31 @@ module GRUtil
   # - not equals to ''
   # - not a repetition of whitespaces characters
   #
+  # If input is an object, method return -1, because accept only String object
+  #
   def GRUtil.is_empty?(other)
 
     # check nil
-    if other == nil
-      false
+    if other == nil then
+      return true
+    end
 
-      # check empty string
-    elsif other.to_s != ''
-      false
+    # not applicable to object
+    if ( other != nil && !other.instance_of?(String) ) then
+      return -1
+    end
+
+    # check empty string
+    if other.to_s === ''
+      true
 
       # check repetition of whitespaces
-    elsif other =~ "(^$|^.*@.*\..*$)"
-      false
+    elsif other =~ /[\\s]+/
+      true
 
       # otherwise
     else
-      true
+      false
     end
   end
 

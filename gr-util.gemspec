@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'gr/util/version'
+require 'gr-util/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "gr-util"
-  spec.version       = Gr::Util::VERSION
+  spec.version       = GRUtil::VERSION
   spec.authors       = ["Giorgio Desideri"]
   spec.email         = ["giorgio.desideri@gmail.com"]
 
