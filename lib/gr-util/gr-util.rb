@@ -7,12 +7,16 @@ require "gr-util/version"
 #
 module GRUtil
   #
-  # Custom call of internal execution of block and an item as input
+  # Custom call of one PROC with some args
   #
-  def GRUtil.custom(&block)
+  # Method return -1 if 1t parameter is not a Proc.
+  #
+  def GRUtil.custom(proc, *args)
 
+    return -1 if !proc.instance_of?(Proc)
+    
     # inner call
-    block.call
+    proc.call(args)
   end
 
   #
@@ -49,6 +53,39 @@ module GRUtil
     else
       false
     end
+  end
+
+  #
+  # Compare two object and decide if they are same object class,
+  # following duck typing concept.
+  #
+  def GRUtil.is_same_duck?(object1, object2)
+
+    same_duck = false
+
+    if (object1.instance_of? object2.class) then
+
+      # check method
+      m1 = object1.methods(true).sort
+      m2 = object2.methods(true).sort
+
+      # counter
+      counter = 0
+
+      # iterate --> check only names
+      m1.each { |method| counter = counter + 1  if m2.include?(method) }
+
+      # coerce number
+      counter = (1.coerce(counter))[0]
+
+      # check
+      if(counter == m1.size) then
+        # same duck
+        same_duck = true
+      end
+    end
+
+    same_duck
   end
 
 end
