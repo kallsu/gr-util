@@ -6,6 +6,7 @@ require "gr-util/version"
 # Author:: Giorgio Desideri <giorgio.desideri@gmail.com>
 #
 module GRUtil
+  
   #
   # Custom call of one PROC with some args
   #
@@ -46,8 +47,8 @@ module GRUtil
       true
 
       # check repetition of whitespaces
-    elsif other =~ /[\\s]+/
-      true
+    #elsif other =~ /[\\s]+/
+    #  true
 
       # otherwise
     else

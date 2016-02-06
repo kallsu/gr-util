@@ -16,13 +16,11 @@ class GRUtilTest < Test::Unit::TestCase
   def test_is_empty()
 
     # empty string
-    str = ""
-    result = GRUtil.is_empty?(str)
+    result = GRUtil.is_empty?("")
     assert_same true, result
 
     # null
-    str = nil
-    result = GRUtil.is_empty?(str)
+    result = GRUtil.is_empty?(nil)
     assert_same true, result
 
     # sequence of spaces
@@ -31,15 +29,11 @@ class GRUtilTest < Test::Unit::TestCase
     #assert_same true, result
 
     # not-empty string
-    str = "Hello World"
-    result = GRUtil.is_empty?(str)
+    result = GRUtil.is_empty?("Hello World")
     assert_same false, result
 
     # object
-    str = Array.new()
-    result = GRUtil.is_empty?(str)
-    print {"Result is #{result} "}
-
+    result = GRUtil.is_empty?(Array.new())
     assert_same -1, result
 
   end
